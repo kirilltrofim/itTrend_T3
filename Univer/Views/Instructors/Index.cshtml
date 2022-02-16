@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Univer.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Преподаватели";
+}
+
+<h1>Преподаватели</h1>
+
+<p>
+    <a asp-action="Create">Создать</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ФИО
+            </th>
+            <th>
+                Номер телефона
+            </th>
+            <th>
+                Фото
+            </th>
+            <th>
+                Группа
+            </th>
+            <th>
+                Курсы
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                <img class="image_student" src="@item.Photo" />
+            </td>
+            <td>
+                @if(item.Group is not null)
+                {
+                    <a asp-controller="Groups" asp-action="Details" asp-route-id="@item.Group.Id">@item.Group.Title</a>
+                }
+
+            </td>
+            <td>
+                <dl>
+                    @foreach(Course c in item.Courses)
+                {
+                    <dd>
+                        <a asp-controller="Courses" asp-action="Details" asp-route-id="@c.Id">@c.Title</a>
+                    </dd>
+                }
+                </dl>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

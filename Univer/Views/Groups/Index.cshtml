@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Univer.Models.Group>
+
+@{
+    ViewData["Title"] = "Группы";
+}
+
+<h1>Группы</h1>
+
+<p>
+    <a asp-action="Create">Создать</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Группа
+            </th>
+            <th>
+                Год
+            </th>
+            <th>
+                Куратор
+            </th>
+            <th>
+                Курс
+            </th>
+            <th>
+                Предметы
+            </th>
+            <th>
+                Студенты
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @if (item.Curator != null)
+                {
+                    <a asp-controller="Instructors" asp-action="Details" asp-route-id="@item.CuratorId">@item.Curator.FullName</a>
+                }
+            </td>
+            <td>
+                @if (item.Course != null)
+                {
+                    <a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseId">@item.Course.Title</a>
+                }
+            </td>
+            <td>
+                @if (item.Special != null)
+                {
+                    <a asp-controller="Specials" asp-action="Details" asp-route-id="@item.SpecialId">@item.Special.Title</a>
+                }
+            </td>
+            <td>
+                <dl>
+                    @foreach(Student s in item.Students)
+                    {
+                    <dd>
+                        <a asp-controller="Students" asp-action="Details" asp-route-id="@s.Id">@s.FullName</a>
+                    </dd>
+                    }
+                </dl>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

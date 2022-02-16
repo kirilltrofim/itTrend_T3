@@ -1,0 +1,37 @@
+﻿@model Univer.Models.Special
+
+@{
+    ViewData["Title"] = "Информация о специальности";
+}
+
+<h1>Информация о специальности</h1>
+
+<div>
+    <h4>Предмет</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Предмет
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Группы
+        </dt>
+        <dd class="col-sm-10">
+            <dl>
+                @foreach (Group g in Model.Groups)
+                {
+                    <dd>
+                        <a asp-controller="Groups" asp-action="Details" asp-route-id="@g.Id">@g.Title</a>
+                    </dd>
+                }
+            </dl>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Вернуться к списку</a>
+</div>

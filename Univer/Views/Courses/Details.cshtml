@@ -1,0 +1,63 @@
+﻿@model Univer.Models.Course
+
+@{
+    ViewData["Title"] = "Информация о курсе";
+}
+
+<h1>Информация о курсе</h1>
+
+<div>
+    <h4>Курс</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Курс
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Группы
+        </dt>
+        <dd class="col-sm-10">
+            <ul>
+                @foreach (Group g in Model.Groups)
+                {
+                    <li>
+                        <a asp-controller="Groups" asp-action="Details" asp-route-id="@g.Id">@g.Title</a>
+                    </li>
+                }
+            </ul>
+        </dd>
+        <dt class="col-sm-2">
+            Преподаватели
+        </dt>
+        <dd class="col-sm-10">
+            <dl>
+                @foreach (Instructor g in Model.Instructors)
+                {
+                    <dd>
+                        <a asp-controller="Instructors" asp-action="Details" asp-route-id="@g.Id">@g.FullName</a>
+                    </dd>
+                }
+            </dl>
+        </dd>
+        <dt class="col-sm-2">
+            Студенты
+        </dt>
+        <dd class="col-sm-10">
+            <dl>
+                @foreach (Student g in Model.Students)
+                {
+                    <dd>
+                        <a asp-controller="Students" asp-action="Details" asp-route-id="@g.Id">@g.FullName</a>
+                    </dd>
+                }
+            </dl>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Вернуться к списку</a>
+</div>

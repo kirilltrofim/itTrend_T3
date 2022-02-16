@@ -1,0 +1,70 @@
+﻿@model Univer.Models.Group
+
+@{
+    ViewData["Title"] = "Информация о группе";
+}
+
+<h1>Информация о группе</h1>
+
+<div>
+    <h4>Группа</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Группа
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Год
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class="col-sm-2">
+            Куратор
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.CuratorId > 0)
+            {
+                <a asp-controller="Instructors" asp-action="Details" asp-route-id="@Model.Id">@Model.Curator.FullName</a>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Курс
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.CourseId > 0)
+            {
+                <a asp-controller="Courses" asp-action="Details" asp-route-id="@Model.CourseId">@Model.Course.Title</a>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Предметы
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Special is not null)
+            {
+            <a asp-controller="Specials" asp-action="Details" asp-route-id="@Model.SpecialId">@Model.Special.Title</a>
+            }       
+        </dd>
+        <dt class="col-sm-2">
+            Студенты
+        </dt>
+        <dd class="col-sm-10">
+            <dl>
+                @foreach (Student s in Model.Students)
+                {
+                    <dd>
+                        <a asp-controller="Students" asp-action="Details" asp-route-id="@s.Id">@s.FullName</a>
+                    </dd>
+                }
+            </dl>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Вернуться к списку</a>
+</div>

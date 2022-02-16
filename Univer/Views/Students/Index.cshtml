@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Univer.Models.Student>
+
+@{
+    ViewData["Title"] = "Студенты";
+}
+
+<h1>Студенты</h1>
+
+<p>
+    <a asp-action="Create">Создать</a>
+</p>
+
+</>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ФИО
+            </th>
+            <th>
+                Номер телефона
+            </th>
+            <th>
+                Фото
+            </th>
+            <th>
+                Курс
+            </th>
+            <th>
+                Группа
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                <img class="image_student" src="@item.Photo" />
+            </td>
+            <td>
+                @if (item.Course is not null)
+                {
+                    <a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseId">@item.Course.Title</a>
+                }
+            </td>
+            <td>
+                @if (item.Group is not null)
+                {
+                <a asp-controller="Groups" asp-action="Details" asp-route-id="@item.GroupId">@item.Group.Title</a>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
