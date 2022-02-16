@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ij9GvaQzBmwKyz+sHByWs4XT7FZ1lPOEQ+TEi9LX+3xx7argTA4pGym3v5VifCujaGUyLX9l/hChovbc4F8tPQ==",
+  "dgSpecHash": "gy1cMRf6ZxabJZtNQZYQ1sKDUkLkIVKdEBnsrKxzwQGBYO4Pi+LeDHaQFRxaBM6uHpFvEDL4ahUN7kMecXfqqQ==",
   "success": true,
-  "projectFilePath": "D:\\iT\\Новая папка (3)\\Univer\\Univer.csproj",
+  "projectFilePath": "D:\\iT\\GitHub\\itTrend_T3\\Univer\\Univer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kirilltrofim\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kirilltrofim\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",

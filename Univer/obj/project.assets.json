@@ -7461,11 +7461,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\iT\\Новая папка (3)\\Univer\\Univer.csproj",
+      "projectUniqueName": "D:\\iT\\GitHub\\itTrend_T3\\Univer\\Univer.csproj",
       "projectName": "Univer",
-      "projectPath": "D:\\iT\\Новая папка (3)\\Univer\\Univer.csproj",
+      "projectPath": "D:\\iT\\GitHub\\itTrend_T3\\Univer\\Univer.csproj",
       "packagesPath": "C:\\Users\\kirilltrofim\\.nuget\\packages\\",
-      "outputPath": "D:\\iT\\Новая папка (3)\\Univer\\obj\\",
+      "outputPath": "D:\\iT\\GitHub\\itTrend_T3\\Univer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kirilltrofim\\AppData\\Roaming\\NuGet\\NuGet.Config",
